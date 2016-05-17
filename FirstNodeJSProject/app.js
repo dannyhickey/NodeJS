@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
+var bodyParser = require("body-parser");
 
+
+app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");//allows node to render pages without needing to write ejs extension 
 
 app.get("/", function(req, res){
@@ -25,6 +28,11 @@ app.get("/footballGrounds", function(req, res) {
         }
         ];
         res.render("footballGrounds", {footballGrounds: footballGrounds});
+});
+
+app.post("/footballGrounds", function(req, res){
+    res.send("You hit the post route");
+    res.render("footballGrounds");
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
