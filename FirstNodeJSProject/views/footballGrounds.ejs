@@ -1,0 +1,8 @@
+<h1>This is the football grounds page</h1>
+
+<% footballGrounds.forEach(function(grounds){ %>
+      <div>
+           <h4><%= grounds.name; %></h4> 
+           <img src="<%= grounds.image %>">
+      </div>
+<% }); %>
