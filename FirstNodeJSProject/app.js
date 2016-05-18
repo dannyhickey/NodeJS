@@ -57,8 +57,6 @@ app.get("/", function(req, res){
 });
 
 app.get("/footballGrounds", function(req, res) {
-  
-    
     res.render("footballGrounds", {footballGrounds: footballGrounds});
 });
 
@@ -76,5 +74,5 @@ app.get("/footballGrounds/new", function(req, res) {
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("Yelp has started!");
+    console.log("Football Grounds server has started!");
 });
