@@ -2,16 +2,8 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 
-
-app.use(bodyParser.urlencoded({extended:true}));
-app.set("view engine", "ejs");//allows node to render pages without needing to write ejs extension 
-
-app.get("/", function(req, res){
-    res.render("index");
-});
-
-app.get("/footballGrounds", function(req, res) {
-    var footballGrounds = [
+  var footballGrounds = 
+    [
         {
             name: "Villa Park",
             image: "https://upload.wikimedia.org/wikipedia/commons/b/b6/VillaPark_PanoramaFromTrinityRoadStand.jpg"
@@ -26,13 +18,33 @@ app.get("/footballGrounds", function(req, res) {
             name: "The Emirates",
             image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Emirates_Stadium_-_East_side_-_Composite.jpg"
         }
-        ];
-        res.render("footballGrounds", {footballGrounds: footballGrounds});
+    ];
+
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.set("view engine", "ejs");//allows node to render pages without needing to write ejs extension 
+
+app.get("/", function(req, res){
+    res.render("index");
+});
+
+app.get("/footballGrounds", function(req, res) {
+  
+    
+    res.render("footballGrounds", {footballGrounds: footballGrounds});
 });
 
 app.post("/footballGrounds", function(req, res){
-    res.send("You hit the post route");
-    res.render("footballGrounds");
+    var name = req.body.name;
+    var image = req.body.image;
+    var newFootballGround = {name: name, image: image};
+    
+    footballGrounds.push(newFootballGround);
+    res.redirect("footballGrounds");
+});
+
+app.get("/footballGrounds/new", function(req, res) {
+   res.render("new.ejs"); 
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
