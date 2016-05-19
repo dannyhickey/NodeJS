@@ -1,6 +1,9 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/football_grounds");
 
   var footballGrounds = 
     [
@@ -18,6 +21,7 @@ var bodyParser = require("body-parser");
             name: "The Emirates",
             image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Emirates_Stadium_-_East_side_-_Composite.jpg"
         },
+        
         {
             name: "Villa Park",
             image: "https://upload.wikimedia.org/wikipedia/commons/0/01/Villa_Park.jpg"
@@ -32,6 +36,7 @@ var bodyParser = require("body-parser");
             name: "The Emirates",
             image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Emirates_Stadium_-_East_side_-_Composite.jpg"
         },
+        
         {
             name: "Villa Park",
             image: "https://upload.wikimedia.org/wikipedia/commons/0/01/Villa_Park.jpg"
