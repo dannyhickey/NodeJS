@@ -5,7 +5,29 @@ var mongoose = require("mongoose");
 
 mongoose.connect("mongodb://localhost/football_grounds");
 
-  var footballGrounds = 
+var footballGroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+var FootballGround = mongoose.model("FootballGround", footballGroundSchema);
+
+FootballGround.create(
+        {
+            name: "Nowhere Park",
+            image: "https://upload.wikimedia.org/wikipedia/commons/0/01/Villa_Park.jpg"
+        }, function(err, grounds)
+        {
+            if(err){
+                console.log(err);
+            }else{
+                console.log("Created new footballGround");
+                console.log(grounds);
+            }
+        }
+    )
+
+  var footballGrounds =  
     [
         {
             name: "Villa Park",
