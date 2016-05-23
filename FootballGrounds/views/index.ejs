@@ -1,8 +1,27 @@
 <% include partials/header %>
-
-<h1>Home Page</h1>
-
-<p>Welcome to the home page</p>
-<a href="/footballGrounds">View Football Grounds</a>
-
+<div class="container">
+      <header class="jumbotron">
+            <h1>This is the Football Grounds Page</h1>
+            <div class="container">
+                  <p>View the football grounds from the Premier League</p>
+                  <p>
+                        <a class="btn btn-primary btn-large" href="/footballGrounds/new">Add New Statium</a>    
+                  </p>
+            </div>
+      </header>
+      
+      <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+            <% footballGrounds.forEach(function(grounds){ %>
+                  <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail">
+                              <img src="<%= grounds.image %>">
+                              <div class="caption">
+                                    <h4><%= grounds.name; %></h4> 
+                              </div>
+                        </div>
+                  </div>
+            <% }); %>
+      </div>
+</div>
+                                    
 <% include partials/footer %>
