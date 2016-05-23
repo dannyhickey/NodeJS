@@ -12,7 +12,7 @@ var footballGroundSchema = new mongoose.Schema({
 
 var FootballGround = mongoose.model("FootballGround", footballGroundSchema);
 
-FootballGround.create(
+/*FootballGround.create(
         {
             name: "Nowhere Park",
             image: "https://upload.wikimedia.org/wikipedia/commons/0/01/Villa_Park.jpg"
@@ -25,9 +25,9 @@ FootballGround.create(
                 console.log(grounds);
             }
         }
-    )
+    );*/
 
-  var footballGrounds =  
+/*  var footballGrounds =  
     [
         {
             name: "Villa Park",
@@ -73,7 +73,7 @@ FootballGround.create(
             name: "The Emirates",
             image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Emirates_Stadium_-_East_side_-_Composite.jpg"
         }
-    ];
+    ];*/
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -83,17 +83,28 @@ app.get("/", function(req, res){
     res.render("index");
 });
 
-app.get("/footballGrounds", function(req, res) {
-    res.render("footballGrounds", {footballGrounds: footballGrounds});
+app.get("/footballGrounds", function(req, res){
+    //Get all footballGrounds from DB
+    FootballGround.find({}, function(err, grounds){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("footballGrounds", {footballGrounds: grounds});
+        }
+    });
 });
 
 app.post("/footballGrounds", function(req, res){
     var name = req.body.name;
     var image = req.body.image;
     var newFootballGround = {name: name, image: image};
-    
-    footballGrounds.push(newFootballGround);
-    res.redirect("footballGrounds");
+    FootballGround.create(newFootballGround, function(err, newAdded){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect("/footballGrounds");
+        }
+    });
 });
 
 app.get("/footballGrounds/new", function(req, res) {
