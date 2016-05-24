@@ -51,7 +51,8 @@ app.get("/footballGrounds", function(req, res){
 app.post("/footballGrounds", function(req, res){
     var name = req.body.name;
     var image = req.body.image;
-    var newFootballGround = {name: name, image: image};
+    var desc = req.body.description;
+    var newFootballGround = {name: name, image: image, description: desc};
     FootballGround.create(newFootballGround, function(err, newAdded){
         if(err){
             console.log(err);
@@ -67,7 +68,13 @@ app.get("/footballGrounds/new", function(req, res) {
 
 //SHOW - shows more info about one football ground.
 app.get("/footballGrounds/:id", function(req, res) {
-   res.render("show");
+    FootballGround.findById(req.params.id, function(err, foundFootballGround){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("show", {footballGround: foundFootballGround});
+        }
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
