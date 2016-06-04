@@ -2,4 +2,6 @@
 
 Blog Application using RESTful routes. 
 
-Styling with semantic ui. 
+Styling with semantic-ui.
+
+Full CRUD setup using RESTful route practices.  
