@@ -1,17 +1,15 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require("body-parser"),
+    mongoose        = require("mongoose"),
+    FootballGround  = require("./models/footballground");
+    // Comment         = require("./models/comment"),
+    // User            = require("./models/user");
 
 mongoose.connect("mongodb://localhost/football_grounds");
 
-var footballGroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
 
-var FootballGround = mongoose.model("FootballGround", footballGroundSchema);
+
 
 // FootballGround.create(
 //         {
