@@ -2,10 +2,12 @@ var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
-    FootballGround  = require("./models/footballground");
+    FootballGround  = require("./models/footballground"),
+    seedDB          = require("./seeds");
     // Comment         = require("./models/comment"),
     // User            = require("./models/user");
 
+seedDB();
 mongoose.connect("mongodb://localhost/football_grounds");
 
 
