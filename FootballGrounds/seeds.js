@@ -44,7 +44,6 @@ function seedDB(){
                                                 console.log(err);
                                             }else{
                                                 footballGround.comments.push(comment);
-                                                console.log(comment);
                                                 footballGround.save();
                                                 console.log("Created new comment");
                                             }

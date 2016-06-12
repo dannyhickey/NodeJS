@@ -7,12 +7,11 @@ var express         = require("express"),
     // Comment         = require("./models/comment"),
     // User            = require("./models/user");
 
-seedDB();
+
 mongoose.connect("mongodb://localhost/football_grounds");
-
-
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");//allows node to render pages without needing to write ejs extension 
+seedDB();
 
 app.get("/", function(req, res){
     res.render("index");
@@ -50,10 +49,11 @@ app.get("/footballGrounds/new", function(req, res) {
 
 //SHOW - shows more info about one football ground.
 app.get("/footballGrounds/:id", function(req, res) {
-    FootballGround.findById(req.params.id, function(err, foundFootballGround){
+    FootballGround.findById(req.params.id).populate("comments").exec(function(err, foundFootballGround){
         if(err){
             console.log(err);
         }else{
+            console.log(foundFootballGround);
             res.render("show", {footballGround: foundFootballGround});
         }
     });
