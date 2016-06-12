@@ -11,24 +11,6 @@ seedDB();
 mongoose.connect("mongodb://localhost/football_grounds");
 
 
-
-
-// FootballGround.create(
-//         {
-//             name: "Villa Park",
-//             image: "https://upload.wikimedia.org/wikipedia/commons/0/01/Villa_Park.jpg",
-//             description: "This is the mighty villa park!"
-//         }, function(err, grounds)
-//         {
-//             if(err){
-//                 console.log(err);
-//             }else{
-//                 console.log("Created new footballGround");
-//                 console.log(grounds);
-//             }
-//         }
-//     );
-
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");//allows node to render pages without needing to write ejs extension 
 

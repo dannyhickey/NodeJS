@@ -1,5 +1,6 @@
-var mongoose = require("mongoose");
-var FootballGround = require("./models/footballground");
+var mongoose        = require("mongoose");
+var FootballGround  = require("./models/footballground");
+var Comment         = require("./models/comment");
 
 var data = [
         {
@@ -28,11 +29,26 @@ function seedDB(){
             console.log("Removed footballGrounds!");
                 //add a few footballgrounds
                 data.forEach(function(seed){
-                            FootballGround.create(seed, function(err, data){
+                            FootballGround.create(seed, function(err, footballGround){
                                 if(err){
                                     console.log(err);
                                 }else{
                                     console.log("added a footballGround");
+                                    //create a comment
+                                    Comment.create(
+                                        {
+                                            text: "A great stadium with a fantastic history.",
+                                            author: "Danny"
+                                        }, function(err, comment){
+                                            if(err){
+                                                console.log(err);
+                                            }else{
+                                                footballGround.comments.push(comment);
+                                                console.log(comment);
+                                                footballGround.save();
+                                                console.log("Created new comment");
+                                            }
+                                        });
                                 }
                             });
                     });
