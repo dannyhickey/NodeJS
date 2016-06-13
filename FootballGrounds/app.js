@@ -24,7 +24,7 @@ app.get("/footballGrounds", function(req, res){
         if(err){
             console.log(err);
         }else{
-            res.render("index", {footballGrounds: grounds});
+            res.render("footballGrounds/index", {footballGrounds: grounds});
         }
     });
 });
@@ -44,7 +44,7 @@ app.post("/footballGrounds", function(req, res){
 });
 
 app.get("/footballGrounds/new", function(req, res) {
-   res.render("new.ejs"); 
+   res.render("footballGrounds/new"); 
 });
 
 //SHOW - shows more info about one football ground.
@@ -54,8 +54,23 @@ app.get("/footballGrounds/:id", function(req, res) {
             console.log(err);
         }else{
             console.log(foundFootballGround);
-            res.render("show", {footballGround: foundFootballGround});
+            res.render("footballGrounds/show", {footballGround: foundFootballGround});
         }
+    });
+});
+
+//==============================================================
+//Comments Routes
+//==============================================================
+
+app.get("/footballGrounds/:id/comments/new", function(req, res) {
+    //find footballGround by Id
+    FootballGround.findById(req.params.id, function(err, footballGround){
+       if(err){
+           console.log(err);
+       }else{
+           res.render("comments/new", {footballGround: footballGround});
+       }
     });
 });
 
