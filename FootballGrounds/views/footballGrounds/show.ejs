@@ -6,6 +6,10 @@
 
 <p><%= footballGround.description %></p>
 
+<p>
+    <a class="btn btn-success" href="/footballGrounds/<%= footballGround._id %>/comments/new">Add Comment</a>
+</p>
+
 <% footballGround.comments.forEach(function(comment){ %>
     <p>
         <strong><%= comment.author %></strong> - <%= comment.text %>

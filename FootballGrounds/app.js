@@ -3,8 +3,8 @@ var express         = require("express"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     FootballGround  = require("./models/footballground"),
-    seedDB          = require("./seeds");
-    // Comment         = require("./models/comment"),
+    seedDB          = require("./seeds"),
+    Comment         = require("./models/comment");
     // User            = require("./models/user");
 
 
@@ -38,7 +38,7 @@ app.post("/footballGrounds", function(req, res){
         if(err){
             console.log(err);
         }else{
-            res.redirect("/footballGrounds");
+            res.redirect("/footballGrounds/");
         }
     });
 });
@@ -72,6 +72,27 @@ app.get("/footballGrounds/:id/comments/new", function(req, res) {
            res.render("comments/new", {footballGround: footballGround});
        }
     });
+});
+
+app.post("/footballGrounds/:id/comments", function(req, res){
+   //lookup footballGround using the ID
+   FootballGround.findById(req.params.id, function(err, footballGround) {
+       if(err){
+           console.log(err);
+           res.redirect("/footballGrounds")
+       }else{
+           Comment.create(req.body.comment, function(err, comment){
+               if(err){
+                   console.log(err);
+               }else{
+                   footballGround.comments.push(comment);
+                   footballGround.save();
+                   res.redirect('/footballGrounds/' + footballGround._id);
+               }
+           });
+       }
+   });
+ 
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){
