@@ -14,26 +14,30 @@
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= footballGround.image %>">
                 <div class="caption-full">
-                    <h4 class="pull-right"></h4>
+                    <h4 class="pull-right">£80 Entry</h4>
                     <h4><a><%= footballGround.name %></a></h4>
                     <p><%= footballGround.description %></p>
                 </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                     <a class="btn btn-success" href="/footballGrounds/<%= footballGround._id %>/comments/new">Add Comment</a>
+                </div>
+                <hr>
+                <% footballGround.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-med-12">
+                            <strong><%= comment.author %></strong>
+                            <span class="pull-right">n days ago</span>
+                            <p><%= comment.text %></p>
+                        </div>
+                    </div>
+                <% }); %>
             </div>
         </div>
     </div>
 </div>
 
 <h1><%= footballGround.name %></h1>
-
-
-<p>
-    <a class="btn btn-success" href="/footballGrounds/<%= footballGround._id %>/comments/new">Add Comment</a>
-</p>
-
-<% footballGround.comments.forEach(function(comment){ %>
-    <p>
-        <strong><%= comment.author %></strong> - <%= comment.text %>
-    </p>
-<% }); %>
 
 <% include ../partials/footer %>

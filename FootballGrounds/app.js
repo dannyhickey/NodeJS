@@ -11,6 +11,7 @@ var express         = require("express"),
 mongoose.connect("mongodb://localhost/football_grounds");
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");//allows node to render pages without needing to write ejs extension 
+app.use(express.static(__dirname + "/public"));
 seedDB();
 
 app.get("/", function(req, res){
