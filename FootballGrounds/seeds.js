@@ -6,17 +6,17 @@ var data = [
         {
             name: "The Aviva",
             image: "http://kclr96fm.com/media/2015/05/aviva-stadium-interior-north-west-small-2.jpg",
-            description: "This is the home stadium for the Republic of Ireland soccer team."
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, earum facilis quibusdam tempore aperiam fugiat blanditiis. Aperiam, quidem facere pariatur provident reiciendis necessitatibus autem! Esse, placeat eaque aut provident aliquam?"
         },
         {
             name: "Villa Park",
             image: "https://s-media-cache-ak0.pinimg.com/736x/1a/c9/2c/1ac92c5b2e52cb911296e60d65334c9f.jpg",
-            description: "This is the home stadium for Aston Villa."
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, earum facilis quibusdam tempore aperiam fugiat blanditiis. Aperiam, quidem facere pariatur provident reiciendis necessitatibus autem! Esse, placeat eaque aut provident aliquam?"
         },
         {
             name: "Anfield",
             image: "https://upload.wikimedia.org/wikipedia/commons/8/86/Anfield,_20_October_2012.jpg",
-            description: "This is the home stadium for Liverpool."
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, earum facilis quibusdam tempore aperiam fugiat blanditiis. Aperiam, quidem facere pariatur provident reiciendis necessitatibus autem! Esse, placeat eaque aut provident aliquam?"
         }
     ];
 
